@@ -59,11 +59,11 @@ function initializeOperators() {
             if(!currentOp)
             {
                 first = false;
-                currentOp = op.id;
-                console.log(currentOp);
+                currentOp = op.id;                
             }
-            if(!two) {
-                
+            /*Only operate if there is a two*/ 
+            if(currentOp && !two) {
+                currentOp = op.id;
             }
             if(operatorCount === 0 && two)
             {
@@ -88,7 +88,7 @@ function initializeOperators() {
                 operatorCount += 1;
                 currentOp = op.id;
             }
-            if(operatorCount > 1)
+            if(operatorCount >= 1 && two)
             {
                 if(currentOp === 'add')
                 {
