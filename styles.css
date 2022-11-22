@@ -37,10 +37,18 @@ div {
     background-color: lightgrey;
     height: 20%;
     text-align: right;
-    font-size: 50px;
+    font-size: 40px;
     padding: 10px;
     border: 2px solid black;
     margin-bottom: 8px;
+}
+
+.equation {
+    background-color: transparent;
+    height: 20%;
+    text-align: right;
+    font-size: 15px;
+
 }
 
 .num {
@@ -58,6 +66,9 @@ button {
     padding: 0px;
 }
 
+button:hover {
+    filter: brightness(85%);
+}
 #clear {
     width: 100%;
 }

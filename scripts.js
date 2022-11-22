@@ -19,9 +19,10 @@ function operate(op, a, b) {
     console.log(b);
     a = parseFloat(a);
     b = parseFloat(b);
-    return op(a, b);
+    return parseFloat(op(a, b).toFixed(6));
 }
 
+let allButtons = document.querySelectorAll('button');
 let display = document.querySelector('.screen');
 let total = 0;
 let operatorCount = 0;
@@ -29,6 +30,8 @@ let one = '';
 let two = '';
 let currentOp = '';
 let first = true;
+
+
 
 function initializeNumbers() {
     let buttons = document.querySelectorAll('#number');
@@ -107,11 +110,61 @@ function initializeOperators() {
                     total = operate(divide, total, two);
                 }
                 two = '';
+                one = total;
                 display.textContent = total;
                 currentOp = op.id;
             }
         })
     })
+}
+
+let clearBut = document.querySelector("#clear");
+
+clearBut.addEventListener('click', clear);
+
+function clear(event) {
+    total = 0;
+    operatorCount = 0;
+    one = '';
+    two = '';
+    currentOp = '';
+    first = true;
+    display.textContent = total;
+}
+
+let equalsBut = document.querySelector("#equal");
+
+equalsBut.addEventListener('click', equals);
+function equals(event) {
+    if(!two)
+    {
+        total = one;
+    }
+    else if(currentOp === 'add')
+    {
+        total = operate(add, one, two);
+    }
+    else if(currentOp === 'subtract')
+    {
+        total = operate(subtract, one, two);
+    }
+    else if(currentOp === 'multiply')
+    {
+        total = operate(multiply, one, two);
+    }
+    else if(currentOp === 'divide')
+    {
+        total = operate(divide, one, two);
+    }
+
+    display.textContent = total;
+    total = 0;
+    operatorCount = 0;
+    one = '';
+    two = '';
+    currentOp = '';
+    first = true;
+
 }
 
 function initialize()
